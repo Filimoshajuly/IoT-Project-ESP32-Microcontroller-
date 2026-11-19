@@ -1,0 +1,1020 @@
+[
+    {
+        "id": "5ffc6524f94b2cf6",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ab7244806e3476f9",
+        "type": "serial in",
+        "z": "5ffc6524f94b2cf6",
+        "name": "SerialUSB0",
+        "serial": "093dd859dbddfbd7",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "dacb35387a681095",
+                "127a095bd9549d2a"
+            ]
+        ]
+    },
+    {
+        "id": "dacb35387a681095",
+        "type": "json",
+        "z": "5ffc6524f94b2cf6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 350,
+        "y": 260,
+        "wires": [
+            [
+                "beeb995727d9099a",
+                "61b91095ce3738fd",
+                "66b6e7a2646a286f",
+                "56d2a2612ba4127d",
+                "9358b6244044fa09",
+                "7b0132be8ce4ede9",
+                "860425bc8e4e6372",
+                "e12194759f50d00a",
+                "cd36f05949b23427",
+                "9726bbd9b0644fda",
+                "21b4d6e063a52c41",
+                "632870c20fad213c",
+                "e11da70544c0d01d",
+                "49b4f47bfc0ef4b6"
+            ]
+        ]
+    },
+    {
+        "id": "beeb995727d9099a",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "Formatting for csv",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 100,
+        "wires": [
+            [
+                "4c7d025518074d2d"
+            ]
+        ]
+    },
+    {
+        "id": "61b91095ce3738fd",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "extract_temperature()",
+        "func": "msg.topic=\"temperature\";\nmsg.payload=msg.payload.status.temperature;\nconsole.log(\"temperature:\"+String(msg.payload));\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 180,
+        "wires": [
+            [
+                "469152bf0b1b24ab"
+            ]
+        ]
+    },
+    {
+        "id": "66b6e7a2646a286f",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "extract_light",
+        "func": "msg.topic=\"light\";\nmsg.payload=msg.payload.status.light;\nconsole.log(\"light:\"+String(msg.payload));\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 260,
+        "wires": [
+            [
+                "0f0ec5a0c5fe6657"
+            ]
+        ]
+    },
+    {
+        "id": "4c7d025518074d2d",
+        "type": "file",
+        "z": "5ffc6524f94b2cf6",
+        "name": "/Users/IM/data.log",
+        "filename": "",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 910,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "469152bf0b1b24ab",
+        "type": "ui_chart",
+        "z": "5ffc6524f94b2cf6",
+        "name": "",
+        "group": "fc0c4eac5f189ef3",
+        "order": 1,
+        "width": 10,
+        "height": 5,
+        "label": "Suivi de la température",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "There is no temperature yet",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#f50000",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ed3102",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 870,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "127a095bd9549d2a",
+        "type": "debug",
+        "z": "5ffc6524f94b2cf6",
+        "name": "msg.payload",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "f3ecc81584a801a3",
+        "type": "comment",
+        "z": "5ffc6524f94b2cf6",
+        "name": "TP2-flow",
+        "info": "\n",
+        "x": 180,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "56d2a2612ba4127d",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "detect_fire()",
+        "func": "msg.topic=\"fire\";\nmsg.payload=msg.payload.status.fire;\nconsole.log(\"fire:\"+String(msg.payload));\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 320,
+        "wires": [
+            [
+                "63c0c84d96a64882"
+            ]
+        ]
+    },
+    {
+        "id": "9358b6244044fa09",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "see_location()",
+        "func": "// On crée un nouvel objet propre pour le widget suivant\nlet coords = {\n    lat: msg.payload.location.gps.lat,\n    lon: msg.payload.location.gps.lon,\n    name: msg.payload.info.ident // On ajoute le nom de l'ESP pour la carte\n};\n\n// On remplace le gros JSON par seulement ces coordonnées\nmsg.payload = coords;\n\n// On définit le topic pour savoir de quoi on parle\nmsg.topic = \"GPS_Location\";\nconsole.log(\"loc: \" + JSON.stringify(msg.payload));\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 400,
+        "wires": [
+            [
+                "bc2303dbeb54f50b"
+            ]
+        ]
+    },
+    {
+        "id": "247f48e809dd69ea",
+        "type": "ui_gauge",
+        "z": "5ffc6524f94b2cf6",
+        "name": "",
+        "group": "7f9e2d78ab12440f",
+        "order": 1,
+        "width": 7,
+        "height": 5,
+        "gtype": "gage",
+        "title": "Puissance ventilateur",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 840,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "7b0132be8ce4ede9",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "extract_fanspeed()",
+        "func": "// On récupère la valeur brute (0-255)\nlet rawSpeed = msg.payload.status.fanspeed;\n\n// On convertit en pourcentage pour que ce soit plus \"humain\"\nlet percent = Math.round((rawSpeed / 255) * 100);\n\n// On prépare le message pour le Dashboard\nmsg.payload = percent;\nmsg.topic = \"Vitesse Ventilateur\"; // Optionnel : donne un titre au graphique\nconsole.log(\"fanspeed:\"+String(msg.payload));\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 480,
+        "wires": [
+            [
+                "247f48e809dd69ea"
+            ]
+        ]
+    },
+    {
+        "id": "0f0ec5a0c5fe6657",
+        "type": "ui_chart",
+        "z": "5ffc6524f94b2cf6",
+        "name": "",
+        "group": "9c14874db8f45da6",
+        "order": 1,
+        "width": 10,
+        "height": 5,
+        "label": "Suivi de la luminosité",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#e3f58a",
+            "#aec7e8",
+            "#f2f7d9",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 820,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bc2303dbeb54f50b",
+        "type": "worldmap",
+        "z": "5ffc6524f94b2cf6",
+        "name": "Situation géographique de l'ESP",
+        "lat": "{msg.payload.location.gps.lat}",
+        "lon": "{msg.payload.location.gps.lon}",
+        "zoom": "",
+        "layer": "OSMG",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "true",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 830,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "860425bc8e4e6372",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "formattage_adresse",
+        "func": "let loc = msg.payload.location;\nlet info = msg.payload.info;\n\n// On construit le texte avec du gras <strong> \n// et des doubles sauts de ligne <br><br>\nmsg.payload = \"<strong> 📍VILLE : \" + info.loc + \"</strong><br><br>\"+\n              \"<strong> ADRESSE : \" + loc.address + \"</strong><br><br>\" +\n              \"<strong> SALLE : \" + loc.room + \"</strong><br><br>\" +\n              \"<strong> APPAREIL : \" + info.ident + \"</strong><br>\";\n             \n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 580,
+        "wires": [
+            [
+                "e7bd241beac45b8b"
+            ]
+        ]
+    },
+    {
+        "id": "e7bd241beac45b8b",
+        "type": "ui_template",
+        "z": "5ffc6524f94b2cf6",
+        "group": "d2f921222143d99c",
+        "name": "Information de localisation",
+        "order": 1,
+        "width": 6,
+        "height": 5,
+        "format": "<div style=\"font-size: 1.1em; text-align: left; padding: 10px;\">\n    <div ng-bind-html=\"msg.payload\"></div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 870,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e12194759f50d00a",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "check_clim",
+        "func": "// On extrait uniquement l'info du froid\nlet etatClim = msg.payload.status.cold;\n\n// On crée le booléen (True si ON, False si OFF)\nlet estActif = (etatClim === \"ON\");\n\n// On sort le message pour la LED\nmsg.payload = estActif;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 660,
+        "wires": [
+            [
+                "214656c0a8121eee"
+            ]
+        ]
+    },
+    {
+        "id": "214656c0a8121eee",
+        "type": "ui_led",
+        "z": "5ffc6524f94b2cf6",
+        "order": 1,
+        "group": "b83bcfde81a32357",
+        "width": 7,
+        "height": 2,
+        "label": "Activation de la clim",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "activation clim",
+        "x": 840,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "cd36f05949b23427",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "check_radiateur",
+        "func": "// On extrait uniquement l'info du chauffage (Heat)\nlet etatRadiateur = msg.payload.status.heat;\n\n// On crée le booléen (True si ON, False si OFF)\nlet estActif = (etatRadiateur === \"ON\");\n\n// On sort le message True/False pour la LED\nmsg.payload = estActif;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 740,
+        "wires": [
+            [
+                "9244bf3f23feeeee"
+            ]
+        ]
+    },
+    {
+        "id": "9244bf3f23feeeee",
+        "type": "ui_led",
+        "z": "5ffc6524f94b2cf6",
+        "order": 4,
+        "group": "b83bcfde81a32357",
+        "width": 7,
+        "height": 2,
+        "label": "Activation radiateur",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 810,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "9726bbd9b0644fda",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "extract_seuil_bas()",
+        "func": "msg.topic=\"regul_lt\";\nmsg.payload=msg.payload.regul.lt;\nconsole.log(\"temperature:\"+String(msg.payload));\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 820,
+        "wires": [
+            [
+                "af586c5ce7a9c17f"
+            ]
+        ]
+    },
+    {
+        "id": "21b4d6e063a52c41",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "extract_seuil_haut()",
+        "func": "msg.topic=\"regul_ht\";\nmsg.payload=msg.payload.regul.ht;\nconsole.log(\"temperature:\"+String(msg.payload));\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 880,
+        "wires": [
+            [
+                "f5e085ba102039ad"
+            ]
+        ]
+    },
+    {
+        "id": "f5e085ba102039ad",
+        "type": "ui_numeric",
+        "z": "5ffc6524f94b2cf6",
+        "name": "",
+        "label": "Température maximale",
+        "tooltip": "",
+        "group": "aadbc9007837019d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": false,
+        "topic": "topic",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": "23",
+        "max": "31",
+        "step": "0.1",
+        "className": "",
+        "x": 860,
+        "y": 880,
+        "wires": [
+            [
+                "8b6d79adad3ddc86"
+            ]
+        ]
+    },
+    {
+        "id": "af586c5ce7a9c17f",
+        "type": "ui_numeric",
+        "z": "5ffc6524f94b2cf6",
+        "name": "",
+        "label": "Température minimal",
+        "tooltip": "",
+        "group": "aadbc9007837019d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": false,
+        "topic": "topic",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": "22",
+        "max": "28",
+        "step": "0.1",
+        "className": "",
+        "x": 860,
+        "y": 820,
+        "wires": [
+            [
+                "8b6d79adad3ddc86"
+            ]
+        ]
+    },
+    {
+        "id": "8b6d79adad3ddc86",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "jsonify_seuil()",
+        "func": "// On récupère la valeur qui vient de changer\nlet valeur = msg.payload;\n\n// On initialise l'objet de sortie\nlet update = {};\n\n// On construit l'objet selon le topic (ex: \"ht\" ou \"lt\")\n// On utilise msg.topic pour savoir quelle clé créer\nif (msg.topic === \"regul_ht\") {\n    update = { regul: { ht: valeur } };\n}\nelse if (msg.topic === \"regul_lt\") {\n    update = { regul: { lt: valeur } };\n}\n\n// On remplace le payload original par notre objet structuré\nmsg.payload = update;\n\nreturn msg;\n\n//delay\nnode.status({ fill: \"blue\", shape: \"dot\", text: \"envoi...\" });\nsetTimeout(() => {\n    node.send(msg);\n    node.status({});\n}, 100);\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 840,
+        "wires": [
+            [
+                "9b40a3b25ddd1090",
+                "1124147b9f83735a"
+            ]
+        ]
+    },
+    {
+        "id": "9b40a3b25ddd1090",
+        "type": "ui_text_input",
+        "z": "5ffc6524f94b2cf6",
+        "name": "seuil envoyé",
+        "label": "",
+        "tooltip": "",
+        "group": "aadbc9007837019d",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "payload",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 1370,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "632870c20fad213c",
+        "type": "function",
+        "z": "5ffc6524f94b2cf6",
+        "name": "formattage réseaux",
+        "func": "let net = msg.payload.net;\nlet host = msg.payload.reporthost;\n\n// Construction du message spécial réseau\nmsg.payload = \"<strong> SSID : \" + net.ssid + \"</strong><br><br>\" +\n              \"<strong> IP LOCALE : \" + net.ip + \"</strong><br><br>\" +\n              \"<strong> ADRESSE MAC : \" + net.mac + \"</strong><br><br>\" +\n              \"<strong> SERVEUR CIBLE : \" + host.target_ip + \":\" + host.target_port + \"</strong><br><br>\" +\n              \"<strong> UPTIME : \" + net.uptime + \" secondes</strong>\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 960,
+        "wires": [
+            [
+                "6e0939563d860198"
+            ]
+        ]
+    },
+    {
+        "id": "6e0939563d860198",
+        "type": "ui_template",
+        "z": "5ffc6524f94b2cf6",
+        "group": "8952f6f4891cf431",
+        "name": "",
+        "order": 1,
+        "width": 5,
+        "height": 5,
+        "format": "<div style=\"font-size: 1.1em; text-align: left; padding: 10px;\">\n    <div ng-bind-html=\"msg.payload\"></div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 840,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "63c0c84d96a64882",
+        "type": "ui_led",
+        "z": "5ffc6524f94b2cf6",
+        "order": 7,
+        "group": "b83bcfde81a32357",
+        "width": 0,
+        "height": 0,
+        "label": "Dectection de feu ",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ffa500",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 790,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "1124147b9f83735a",
+        "type": "serial out",
+        "z": "5ffc6524f94b2cf6",
+        "name": "Serial out",
+        "serial": "093dd859dbddfbd7",
+        "x": 1340,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "2e2c81b3840ccacf",
+        "type": "http in",
+        "z": "5ffc6524f94b2cf6",
+        "name": "",
+        "url": "/esp",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "dacb35387a681095"
+            ]
+        ]
+    },
+    {
+        "id": "e11da70544c0d01d",
+        "type": "http response",
+        "z": "5ffc6524f94b2cf6",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 340,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "49b4f47bfc0ef4b6",
+        "type": "debug",
+        "z": "5ffc6524f94b2cf6",
+        "name": "http",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 130,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "340d5c217e81ad85",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "9c14874db8f45da6",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4822146f536babdb",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "9c14874db8f45da6",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4ff666307eaaba4a",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "9c14874db8f45da6",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "cf69d9715479dc06",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "9c14874db8f45da6",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6de752c1d8a406c9",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "9c14874db8f45da6",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "63342b3f3ed8d48c",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "fc0c4eac5f189ef3",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "392f9496f30651bf",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "fc0c4eac5f189ef3",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "aa9f724e6a485bf3",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "fc0c4eac5f189ef3",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "04aaa92882a0ebf9",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "fc0c4eac5f189ef3",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "7334e0c5d0fd4e46",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "fc0c4eac5f189ef3",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "fc85f580d7ae93d6",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "b83bcfde81a32357",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3a9315bc12c54416",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "b83bcfde81a32357",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "7bc72c2c1ed13dce",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "b83bcfde81a32357",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ee25c7b3f2428604",
+        "type": "ui_spacer",
+        "z": "5ffc6524f94b2cf6",
+        "name": "spacer",
+        "group": "b83bcfde81a32357",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "093dd859dbddfbd7",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "/dev/tty.SLAB_USBtoUART",
+        "serialbaud": "115200",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "fc0c4eac5f189ef3",
+        "type": "ui_group",
+        "name": "Température ",
+        "tab": "737fbde2cb31ed33",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7f9e2d78ab12440f",
+        "type": "ui_group",
+        "name": "Gestion ",
+        "tab": "737fbde2cb31ed33",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9c14874db8f45da6",
+        "type": "ui_group",
+        "name": "Luminosité",
+        "tab": "737fbde2cb31ed33",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d2f921222143d99c",
+        "type": "ui_group",
+        "name": "Informations générales",
+        "tab": "737fbde2cb31ed33",
+        "order": 4,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b83bcfde81a32357",
+        "type": "ui_group",
+        "name": "Mise en place mesures",
+        "tab": "737fbde2cb31ed33",
+        "order": 5,
+        "disp": true,
+        "width": "9",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "aadbc9007837019d",
+        "type": "ui_group",
+        "name": "Controle des seuils",
+        "tab": "737fbde2cb31ed33",
+        "order": 6,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8952f6f4891cf431",
+        "type": "ui_group",
+        "name": "Informations réseaux",
+        "tab": "737fbde2cb31ed33",
+        "order": 4,
+        "disp": true,
+        "width": "5",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "737fbde2cb31ed33",
+        "type": "ui_tab",
+        "name": "Dashboard MIAGE",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "a32c3b585ce5bb6d",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-node-serialport": "2.0.3",
+            "node-red-dashboard": "3.6.6",
+            "node-red-contrib-web-worldmap": "5.6.2",
+            "node-red-contrib-ui-led": "0.4.11"
+        }
+    }
+]

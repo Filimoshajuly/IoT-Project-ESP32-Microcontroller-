@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" type="text/css" href="esp.css">
+    <title>ESP32 Dashboard</title>
+</head>
+<body>
+    <div class="dashboard">
+        <h1><i class="fas fa-microchip"></i> ESP32 Control</h1>
+        
+        <div class="card">
+            <h3><i class="fas fa-info-circle" style="color: #3b82f6;"></i> Object status</h3>
+            <div class="info-line">
+                <span class="info-label">Uptime</span>
+                <span class="info-value">%UPTIME% s</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">Location</span>
+                <span class="info-value">%WHERE%</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fas fa-wifi" style="color: #10b981;"></i> Network link status</h3>
+            <div class="info-line">
+                <span class="info-label">WiFi SSID</span>
+                <span class="info-value">%SSID%</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">MAC Address</span>
+                <span class="info-value">%MAC%</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">IP Address</span>
+                <span class="info-value">%IP%</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3><i class="fas fa-sliders-h" style="color: #f59e0b;"></i> Actuators Status</h3>
+            <div class="info-line">
+                <span class="info-label">Cooler</span>
+                <span class="info-value">%COOLER%</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">Heater</span>
+                <span class="info-value">%HEATER%</span>
+            </div>
+        </div>
+        
+        <div class="sensors-grid">
+            <div class="sensor-card">
+                <i class="fas fa-thermometer-half" style="color:#ef4444;"></i>
+                <span class="info-label">Temperature</span>
+                <div class="value"><span id="temperature">%TEMPERATURE%</span><sup class="units">&deg;C</sup></div>
+            </div>
+            
+            <div class="sensor-card">
+                <i class="far fa-lightbulb" style="color: #eab308;"></i>
+                <span class="info-label">Light</span>
+                <div class="value"><span id="light">%LIGHT%</span><sup class="units"> Lm</sup></div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fas fa-thermometer" style="color: #6366f1;"></i> Temp. Regul. Thresholds</h3>
+            <div class="info-line">
+                <span class="info-label">Low Temp Threshold</span>
+                <span class="info-value">%LT% &deg;C</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">High Temp Threshold</span>
+                <span class="info-value">%HT% &deg;C</span>
+            </div>
+        </div>
+        
+        <form action="/target" method="post">
+            <h3><i class="fas fa-paper-plane" style="color: #ec4899;"></i> Periodic Status Report</h3>
+            
+            <div class="form-group">
+                <label for="ip">IP Address</label>
+                <input type="text" id="ip" name="ip" placeholder="%PRT_IP%"/>
+            </div>
+            
+            <div class="form-group">
+                <label for="port">Port</label>
+                <input type="text" id="port" name="port" placeholder="%PRT_PORT%"/>
+            </div>
+            
+            <div class="form-group">
+                <label for="sp">Sampling Period (seconds)</label>
+                <input type="text" id="sp" name="sp" placeholder="%PRT_T%"/>
+            </div>
+            
+            <input type="submit" value="Update Reporting Host"/>
+        </form>
+    </div>
+    
+    <!-- AJAX complètement supprimé -->
+</body>
+</html>

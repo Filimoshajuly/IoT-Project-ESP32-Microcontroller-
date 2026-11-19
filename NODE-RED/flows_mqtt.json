@@ -1,0 +1,105 @@
+[
+    {
+        "id": "914a9670755d33a5",
+        "type": "tab",
+        "label": "Flux 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "15867a551d3e473e",
+        "type": "comment",
+        "z": "914a9670755d33a5",
+        "name": "MQTT",
+        "info": "",
+        "x": 110,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ac62f0087473c198",
+        "type": "mqtt in",
+        "z": "914a9670755d33a5",
+        "name": "",
+        "topic": "uca/iot/master/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9fdce7f12b72e69a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 160,
+        "wires": [
+            [
+                "10c096cebb5e143c"
+            ]
+        ]
+    },
+    {
+        "id": "10c096cebb5e143c",
+        "type": "json",
+        "z": "914a9670755d33a5",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "bd3f2395dd9adcd1"
+            ]
+        ]
+    },
+    {
+        "id": "bd3f2395dd9adcd1",
+        "type": "debug",
+        "z": "914a9670755d33a5",
+        "name": "debug mqtt",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9fdce7f12b72e69a",
+        "type": "mqtt-broker",
+        "name": "Local Mosquito",
+        "broker": "10.0.1.69",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
